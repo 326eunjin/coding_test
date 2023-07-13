@@ -9,7 +9,7 @@ num = input().split()
 #     num.append(input().split())
 for i in range(len(num)):
     num[i] = int(num[i])
-num.sort(reverse=True)
+num.sort(reverse=True) #6 5 4 4 2
 ret = 0
 i = 0
 j = 0

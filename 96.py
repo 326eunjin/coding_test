@@ -1,6 +1,6 @@
 n, m = map(int, input().split())
 card = []
-tmp = []
+
 ret = []
 for i in range(n):
     card.append(list(input().split(' ')))
