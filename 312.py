@@ -16,3 +16,5 @@ for i in range(len(l)-1):
             result += l[i+1]
 
 print(result)
+
+#1일 때 더해줘야함 단순히 0일때만 아님
