@@ -1,21 +1,19 @@
 n, s, m = map(int, input().split())
 v = list(map(int, input().split()))
 
-dp = [[False] * (m + 1) for _ in range(n + 1)]
-dp[0][s] = True  # 시작 볼륨
+# 시작 볼륨 집합
+possible = {s}
 
-for i in range(1, n + 1):
-    for vol in range(m + 1):
-        if dp[i - 1][vol]:  # 이전에 vol 가능했다면
-            if vol + v[i - 1] <= m:
-                dp[i][vol + v[i - 1]] = True
-            if vol - v[i - 1] >= 0:
-                dp[i][vol - v[i - 1]] = True
+for i in range(n):
+    next_set = set()
+    for vol in possible:
+        if vol + v[i] <= m:
+            next_set.add(vol + v[i])
+        if vol - v[i] >= 0:
+            next_set.add(vol - v[i])
+    possible = next_set
 
-ans = -1
-for vol in range(m, -1, -1):  # 큰 볼륨부터 확인
-    if dp[n][vol]:
-        ans = vol
-        break
-
-print(ans)
+if not possible:  # 아무 볼륨도 못 만들면
+    print(-1)
+else:
+    print(max(possible))  # 가능한 볼륨 중 최댓값
